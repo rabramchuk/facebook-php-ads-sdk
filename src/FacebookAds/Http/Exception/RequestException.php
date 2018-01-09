@@ -97,10 +97,14 @@ class RequestException extends Exception {
    * @param mixed $default
    * @return mixed
    */
-  protected static function idx(array $array, $key, $default = null) {
-    return array_key_exists($key, $array)
-      ? $array[$key]
-      : $default;
+  protected static function idx($array, $key, $default = null) {
+    $result = [];
+
+    if (is_array($array)) {
+      $result = array_key_exists($key, $array) ? $array[$key] : $default;
+    }
+
+    return $result;
   }
 
   /**
